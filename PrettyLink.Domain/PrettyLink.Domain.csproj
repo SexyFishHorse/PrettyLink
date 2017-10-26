@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="awssdk.dynamodbv2" Version="3.3.4.19" />
+    <PackageReference Include="jetbrains.annotations" Version="11.1.0" />
+  </ItemGroup>
+
 </Project>

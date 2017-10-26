@@ -7,6 +7,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.PlatformAbstractions;
+    using PrettyLink.Api.Configuration;
     using Swashbuckle.AspNetCore.Swagger;
 
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
@@ -33,11 +34,15 @@
                         setup.SwaggerEndpoint("/swagger/v1/swagger.json", "PrettyLink API V1");
                     });
 
+            app.AddAutoMapper();
+
             app.UseMvc();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDomainServices();
+
             services.AddMvc();
 
             services.AddSwaggerGen(
