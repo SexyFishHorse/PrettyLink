@@ -8,6 +8,10 @@
     public interface ILinkService
     {
         [NotNull]
+        [ItemCanBeNull]
+        Task<Link> GetLinkAsync([NotNull] string prettyLink);
+
+        [NotNull]
         [ItemNotNull]
         Task<IEnumerable<Link>> GetLinksAsync();
     }

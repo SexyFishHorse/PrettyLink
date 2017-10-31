@@ -10,5 +10,9 @@
         [NotNull]
         [ItemNotNull]
         Task<IEnumerable<Link>> GetLinksAsync();
+
+        [NotNull]
+        [ItemCanBeNull]
+        Task<Link> GetLinkAsync([NotNull] string prettyLink);
     }
 }

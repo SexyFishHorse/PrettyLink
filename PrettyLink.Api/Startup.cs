@@ -4,6 +4,7 @@
     using JetBrains.Annotations;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.PlatformAbstractions;
@@ -43,7 +44,7 @@
         {
             services.AddDomainServices();
 
-            services.AddMvc();
+            services.AddMvc(c => c.Filters.Add(new ProducesAttribute("application/json")));
 
             services.AddSwaggerGen(
                 setup =>

@@ -19,5 +19,13 @@
                 return await asyncSearch.GetRemainingAsync().ConfigureAwait(false);
             }
         }
+
+        public async Task<Link> GetLinkAsync(string prettyLink)
+        {
+            using (var context = new DynamoDBContext(new AmazonDynamoDBClient(new AmazonDynamoDBConfig())))
+            {
+                return await context.LoadAsync<Link>(prettyLink).ConfigureAwait(false);
+            }
+        }
     }
 }

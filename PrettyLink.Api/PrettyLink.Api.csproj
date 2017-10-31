@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fenris.Validation\Fenris.Validation.csproj" />
     <ProjectReference Include="..\PrettyLink.Domain\PrettyLink.Domain.csproj" />
   </ItemGroup>
 

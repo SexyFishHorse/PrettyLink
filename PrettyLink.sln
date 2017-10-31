@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrettyLink.Api", "PrettyLink.Api\PrettyLink.Api.csproj", "{DFCD3241-5EB1-47C0-8FCC-1E62010B55DB}"
 EndProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fenris.Validation", "Fenris.Validation\Fenris.Validation.csproj", "{7FA6103C-2093-4FF8-8931-D908F593833C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +76,18 @@ Global
 		{96DEA9CF-5B0F-4244-B299-E4E93AF45C35}.Release|x64.Build.0 = Release|Any CPU
 		{96DEA9CF-5B0F-4244-B299-E4E93AF45C35}.Release|x86.ActiveCfg = Release|Any CPU
 		{96DEA9CF-5B0F-4244-B299-E4E93AF45C35}.Release|x86.Build.0 = Release|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Debug|x64.Build.0 = Debug|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Debug|x86.Build.0 = Debug|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Release|x64.ActiveCfg = Release|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Release|x64.Build.0 = Release|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FA6103C-2093-4FF8-8931-D908F593833C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

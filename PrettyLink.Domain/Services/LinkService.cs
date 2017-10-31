@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Fenris.Validation.ArgumentValidation;
     using JetBrains.Annotations;
     using PrettyLink.Domain.DataAccess;
     using PrettyLink.Domain.DataAccess.Model;
@@ -14,6 +15,13 @@
         public LinkService(ILinkDataProvider dataProvider)
         {
             this.dataProvider = dataProvider;
+        }
+
+        public async Task<Link> GetLinkAsync(string prettyLink)
+        {
+            prettyLink.ShouldNotBeNullOrEmpty(nameof(prettyLink));
+
+            return await dataProvider.GetLinkAsync(prettyLink).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Link>> GetLinksAsync()
