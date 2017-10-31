@@ -7,8 +7,10 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.PlatformAbstractions;
     using PrettyLink.Api.Configuration;
+    using PrettyLink.Api.Middleware;
     using Swashbuckle.AspNetCore.Swagger;
 
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
@@ -21,8 +23,12 @@
 
         public IConfiguration Configuration { get; }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddDebug();
+
+            app.UseMiddleware<ArgumentExceptionHandler>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
