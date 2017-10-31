@@ -8,7 +8,7 @@
     [DynamoDBTable("dev_links")]
     public class Link
     {
-        public LinkMetadata Metadata { get; set; }
+        public LinkMetadata Metadata { get; set; } = new LinkMetadata();
 
         public string OriginalLink { get; set; }
 

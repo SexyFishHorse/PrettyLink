@@ -1,0 +1,19 @@
+﻿{
+    "Nouns":
+    [
+        "Horse",
+        "Cat",
+        "Dog",
+        "Table",
+        "Shoe",
+        "Lamp"
+    ],
+    "Adjectives":
+    [
+        "Cute",
+        "Sad",
+        "Bad",
+        "Fat",
+        "Ugly"
+    ]
+}

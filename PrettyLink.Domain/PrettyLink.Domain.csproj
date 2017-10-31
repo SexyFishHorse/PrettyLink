@@ -7,10 +7,17 @@
   <ItemGroup>
     <PackageReference Include="awssdk.dynamodbv2" Version="3.3.4.19" />
     <PackageReference Include="jetbrains.annotations" Version="11.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fenris.Validation\Fenris.Validation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="dictionary.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -28,14 +28,16 @@
                 app.UseDeveloperExceptionPage();
             }
 
+            app.AddAutoMapper();
+
+            app.UseStatusCodePages();
+
             app.UseSwagger();
             app.UseSwaggerUI(
                 setup =>
                     {
                         setup.SwaggerEndpoint("/swagger/v1/swagger.json", "PrettyLink API V1");
                     });
-
-            app.AddAutoMapper();
 
             app.UseMvc();
         }

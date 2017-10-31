@@ -14,5 +14,8 @@
         [NotNull]
         [ItemCanBeNull]
         Task<Link> GetLinkAsync([NotNull] string prettyLink);
+
+        [NotNull]
+        Task SaveLinkAsync([NotNull] Link link);
     }
 }

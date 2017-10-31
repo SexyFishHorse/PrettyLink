@@ -1,8 +1,10 @@
 ﻿namespace PrettyLink.Api.Configuration
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using JetBrains.Annotations;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.PlatformAbstractions;
     using PrettyLink.Domain.DataAccess;
     using PrettyLink.Domain.Services;
 
@@ -22,6 +24,8 @@
         private static IServiceCollection AddDataAccess(this IServiceCollection services)
         {
             services.AddSingleton<ILinkDataProvider, LinkDataProvider>();
+            services.AddSingleton<IWordDataProvider>(
+                new WordDataProvider(Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "dictionary.json")));
 
             return services;
         }

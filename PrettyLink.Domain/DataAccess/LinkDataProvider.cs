@@ -10,9 +10,17 @@
     [UsedImplicitly]
     public class LinkDataProvider : ILinkDataProvider
     {
+        public async Task<Link> GetLinkAsync(string prettyLink)
+        {
+            using (var context = new DynamoDBContext(new AmazonDynamoDBClient()))
+            {
+                return await context.LoadAsync<Link>(prettyLink).ConfigureAwait(false);
+            }
+        }
+
         public async Task<IEnumerable<Link>> GetLinksAsync()
         {
-            using (var context = new DynamoDBContext(new AmazonDynamoDBClient(new AmazonDynamoDBConfig())))
+            using (var context = new DynamoDBContext(new AmazonDynamoDBClient()))
             {
                 var asyncSearch = context.ScanAsync<Link>(new ScanCondition[0]);
 
@@ -20,11 +28,11 @@
             }
         }
 
-        public async Task<Link> GetLinkAsync(string prettyLink)
+        public async Task SaveLinkAsync(Link link)
         {
-            using (var context = new DynamoDBContext(new AmazonDynamoDBClient(new AmazonDynamoDBConfig())))
+            using (var context = new DynamoDBContext(new AmazonDynamoDBClient()))
             {
-                return await context.LoadAsync<Link>(prettyLink).ConfigureAwait(false);
+                await context.SaveAsync(link).ConfigureAwait(false);
             }
         }
     }

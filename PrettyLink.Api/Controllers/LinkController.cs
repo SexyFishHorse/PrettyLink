@@ -6,6 +6,7 @@
     using Fenris.Validation.ArgumentValidation;
     using Microsoft.AspNetCore.Mvc;
     using PrettyLink.Api.ComplexTypes;
+    using PrettyLink.Api.ComplexTypes.Requests;
     using PrettyLink.Domain.Services;
     using DomainLink = PrettyLink.Domain.DataAccess.Model.Link;
 
@@ -19,16 +20,21 @@
         }
 
         /// <summary>
-        /// Returns a list of all pretty links and their redirects
+        /// Creates a new pretty redirect link for an existing url.
         /// </summary>
-        /// <response code="200">Links are returned successfully</response>
-        [HttpGet("v1/links")]
-        [ProducesResponseType(typeof(IEnumerable<Link>), 200)]
-        public async Task<IActionResult> GetLinksAsync()
+        /// <param name="request">The link to create a redirect for</param>
+        /// <response code="201">Link has been successfully created.</response>
+        [HttpPost("/v1/links")]
+        [ProducesResponseType(typeof(Link), 201)]
+        public async Task<IActionResult> CreateLinkAsync([FromBody] CreateLinkRequest request)
         {
-            var links = await service.GetLinksAsync().ConfigureAwait(false);
+            request.ShouldNotBeNull(nameof(request));
+            request.OriginalLink = request.OriginalLink?.Trim();
+            request.OriginalLink.ShouldNotBeNullOrEmpty(nameof(request));
 
-            return Ok(Mapper.Map<IEnumerable<DomainLink>, IEnumerable<Link>>(links));
+            var link = await service.CreateLinkAsync(request.OriginalLink).ConfigureAwait(false);
+
+            return Created($"/v1/links/{link.PrettyLink}", Mapper.Map<DomainLink, Link>(link));
         }
 
         /// <summary>
@@ -53,6 +59,19 @@
             }
 
             return Ok(Mapper.Map<DomainLink, Link>(link));
+        }
+
+        /// <summary>
+        /// Returns a list of all pretty links and their redirects
+        /// </summary>
+        /// <response code="200">Links are returned successfully</response>
+        [HttpGet("v1/links")]
+        [ProducesResponseType(typeof(IEnumerable<Link>), 200)]
+        public async Task<IActionResult> GetLinksAsync()
+        {
+            var links = await service.GetLinksAsync().ConfigureAwait(false);
+
+            return Ok(Mapper.Map<IEnumerable<DomainLink>, IEnumerable<Link>>(links));
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
